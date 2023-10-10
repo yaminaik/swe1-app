@@ -25,7 +25,7 @@ SECRET_KEY = 'pm)vl0pk7(32=pq8@@gh12mi!^kt#5m197gdoot6^9hs8wmw9-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pollapp-env.eba-2tpfmgr2.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['pollapp-env.eba-2tpfmgr2.us-east-1.elasticbeanstalk.com','127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [
