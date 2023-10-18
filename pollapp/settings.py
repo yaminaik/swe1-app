@@ -25,7 +25,7 @@ SECRET_KEY = 'pm)vl0pk7(32=pq8@@gh12mi!^kt#5m197gdoot6^9hs8wmw9-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-poll1-env.eba-njxmhitf.us-east-1.elasticbeanstalk.com','127.0.0.1']
+ALLOWED_HOSTS = ['pollapp.us-east-1.elasticbeanstalk.com','127.0.0.1']
 
 
 # Application definition
