@@ -1,0 +1,24 @@
+language: python
+python:
+  - "3.8"  # You can choose the Python version you need
+install:
+- pip install -r requirements.txt
+before_script:
+- python manage.py migrate
+script:
+- black --check .
+- flake8 .
+- coverage run --source=swe1-app manage.py test
+- coverage report
+after_success:
+  - coveralls
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_ACCESS_SECRET
+  region: us-east-1  # Change to your desired AWS region
+  app: swe1-app
+  env: pollapp
+  bucket_name: elasticbeanstalk-us-east-1-663795027423
+  on:
+    branch: master  # Deploy on the master branch
