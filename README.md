@@ -2,6 +2,6 @@
 
 pollapp.us-east-1.elasticbeanstalk.com 
 
-[![image](https://app.travis-ci.com/yaminaik/swe1-app.svg?branch=main)
+[![Build Status](https://app.travis-ci.com/yaminaik/swe1-app.svg?branch=main)]([https://app.travis-ci.com/kolharsam/assignment-practical-swe](https://app.travis-ci.com/github/yaminaik/swe1-app))
 
 https://app.travis-ci.com/github/yaminaik/swe1-app
