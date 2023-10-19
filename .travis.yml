@@ -26,3 +26,7 @@ deploy:
   bucket_name: "elasticbeanstalk-us-east-1-663795027423"
   on:
     all_branches: true
+
+env:
+  global:
+    - secure: $COVERALLS_REPO_TOKEN
