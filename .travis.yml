@@ -1,6 +1,7 @@
 language: python
 python:
-  - "3.9"  # You can choose the Python version you need            
+  - "3.9"  # You can choose the Python version you need 
+
 install:
   - pip install -r requirements.txt
 
@@ -22,5 +23,5 @@ deploy:
   env: "pollapp"
   bucket_name: "elasticbeanstalk-us-east-1-663795027423"
   on:
-    all_branches: true
+    branch: main
 
