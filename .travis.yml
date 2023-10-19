@@ -1,6 +1,10 @@
 language: python
 python:
-  - "3.8"  # You can choose the Python version you need            
+  - "3.9"  # You can choose the Python version you need            
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libssl1.1  # Install a newer version of OpenSSL
+
 install:
   - pip install -r requirements.txt
   - pip install --upgrade urllib3
