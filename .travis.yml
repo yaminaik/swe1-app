@@ -2,7 +2,11 @@ language: python
 python:
   - "3.8"  # You can choose the Python version you need
 install:
-  - pip install -r requirements.txt
+  - cd swe1-app && pip install -r requirements.txt
+  - pip install black
+  - pip install flake8
+  - pip install coverage
+  - pip install coveralls
 before_script:
   - python manage.py migrate
 script:
