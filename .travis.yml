@@ -1,24 +1,9 @@
 language: python
 python:
   - "3.9"  # You can choose the Python version you need            
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libssl-dev
-  - wget https://www.openssl.org/source/openssl-1.1.1l.tar.gz
-  - tar -xzvf openssl-1.1.1l.tar.gz
-  - cd openssl-1.1.1l
-  - ./config
-  - make
-  - sudo make install
-  - cd ..
-
 install:
   - pip install -r requirements.txt
-  - pip install --upgrade urllib3
-  - pip install black
-  - pip install flake8
-  - pip install coverage
-  - pip install coveralls
+
 before_script:
   - python manage.py migrate
 script:
