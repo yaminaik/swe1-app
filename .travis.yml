@@ -14,8 +14,8 @@ script:
   - flake8 .  --max-line-length=100
   - coverage run --source=swe1-app,polls manage.py test
   - coverage report
-after_script:
-      -coveralls
+after_success:
+  - coveralls
 deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY
