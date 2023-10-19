@@ -10,20 +10,15 @@ script:
   - flake8 .  --max-line-length=100
   - coverage run --source=swe1-app,polls manage.py test
   - coverage report
-after_success:
-  - export COVERALLS_REPO_TOKEN:
-      secure: "l3CmLadEiZ/vfkUn7GkgkgSpk8UvqMs+faPpQGQWQ0QErGdmXoP4vXO78kua1cy4KeqKR9zdTMPXrdV3BVNsBU/yQ6pKnAKdEi7W75ZKG+I93HySS7kisPyOnQmeI+tdl8cSpiwLdWNqV+m6sY9yhaE3cpMNesOjrpSKDBQkeIdH7EOg0zH8OizDbL6b+SitZaiV03+D9o1piLMpaEPABw1/lQF8Pvihd4jDN5ul+akw70OSDKQ1c7wj+AwZMXt0ElnNfJKNVW7hyWB1T2lKLOssa4LwZMxw1dBdvzJadrTTUvksEIih3HAlykVL5YQw+rUHF9rE9yMMZ4Szrukl9amaA9cTBHfmkW/y+8TMLZZz+AOWYbMi7ls2r3xyvOzJ9tMfaPtrfhJcjY09edD5PXEpMv8C/YCmP7LAhzcus6L29aA2LoKZz2iCuM1zL6R3cOOBqMyGnDjqL7OPL1QDhbWuZSavCS1rDONEgYKfG0bWyqqycHR8AcrG42rcoP91EyfP/9UEPpuX/rp+jeh0uNLi41wEMLCx2smnyCJSm1hmWe7zcVLuRJLqwOmG8RNvBAaO/XVYPcpks+XbQ1canCHNthWwd7zxfKQWVM0m01tR7F9rMRorT2H4axbF/1AbhdPhhRKFTyDQl1sJBsgOe0+QYUmOYLYmB76bItxvQPI=" 
-  - coveralls
+after_script:
+      - $COVERALLS_REPO_TOKEN coveralls
 deploy:
   provider: elasticbeanstalk
-  access_key_id:
-    secure: "sMU3RrvlYTv3MlDTVxFTx9RRI/V6tdBz8B/2KHEz1E4TYA4mnB2X7qRYvaq21W9ocAXX4+zidya/q+3KmWo4a2IyvLHG3tnjTj6WrW4czMgyC9HJ0FjU6W3DsfE4/Fe/iKJnZiyqWsNNVqfQh7OW4QXDgBcfp5NJx9GiOVQsPot7XHT9LugP119qYeWXOnQlpiyxyMapOk6ttdy1jLha0du1ncrnTC1YHJL5fuAhvr7jGnlENpXDOuVYaVMXgxCPlkll6hxppliqZsCG/A9vdt5LeC8xe80abGQTOzDnXoXdspWQnO5Cf94emZQRO4+TPQwyGqbS+TX+SrbnjLgnUBXaYlvn4CrzPepW9N+1+e1OJEYcrIirkwjTnp5o14FUngYxxNUHh9w5OdYOUGR+amXbklRK5RZEVncPrYaV2gc0jLzJLh8h8Uvu6TbF7Ul1caqw5+G3QtrimMTxowgcO6jUkVQAZ/SZ1br/yLgoEyvDFhTWcfKjG5vpF1Sk4vq8UuTPIEUWSRqBaN+HEnn/fmN7papkECfXTrB7r7jUUxLHPwf8P/wqK2O+hCpY5Vhfuz0yC3dbWvqIO+4eaKJ9YtsJE1bmd92JruZ+nUhdL1s7EC+jdnM6U0izSYKZJr0zZe5w0Tefr0KD6wcn3pAyslkPLbqbLYiW/whXcov67dg="
-  secret_access_key: 
-    secure: "V+WQfW6zEouECnmfLrc664yHgGjZAp2VAgNwC7rKbuKh9Dh23eeTwYhbzGzhedaVK/Exqcju4r/Aqk3007AHAiyu8PLYCr7CNGSnSsexRGQTtfZKUTLf/qhPoTBEj7eZHtRsvMe0w1EKDnar0wytzsY7Dvu8SQ64UkfN7DMbJE1s5SA4oIRldCokMIgWE4jj8T0Tpp2b9u3btNsex5XPlBGg4GRV00qhmCbBIS6U60bwkJ9ilkzDCFsQAa4Qz/APGXAYw6lwwybuxBZBRtp5ZIkzHRH1xNwwRnCIFDF4VMjadoQc7/13VYOBKS9X1qrmwP57Vxp/qIwIQcriFubum5PPkVkeYxtk7061UoTmljr5/LYsRRsOUKGofK6UYrO4J3kp5IZz3E8Xy+6Gdq3i0D31DZ4n2WROlxIpLzez5T8qbFKzt8HDPZhcMqe4xshiPpRNCTEAC3HI53P4l/RKZOM9bIq5If3wG6J8ui7zo+0JgO/8SXKrHJ9VQzSe2Uo+24Ngq+VGeW7iNYkYHwVvsqO1hWuftSXBITECaPYjGhULw9M2v+bCNjP+ok/hG7oX1t0RXjY0iu0PafiEMfLjFYWotYejp2tt/A+aADfHVx66m90wfhrSdWYj0oq7QuGSNvtVVZIS3rcpg6Sepy9mz+PnSAdV1FEyGOXa7ZhuGEI="
-  region: us-east-1  # Change to your desired AWS region
-  app: swe1-app
-  env: pollapp
-  bucket_name: elasticbeanstalk-us-east-1-663795027423
+  access_key_id: $ AWS_ACCESS_KEY
+  secret_access_key: $AWS_ACCESS_SECRET
+  region: "us-east-1"  # Change to your desired AWS region
+  app: "swe1-app"
+  env: "pollapp"
+  bucket_name: "elasticbeanstalk-us-east-1-663795027423"
   on:
-    branch: master  # Deploy on the master branch
-#COVERALLS_REPO_TOKEN="" coveralls
+    all_branches: true
