@@ -1,8 +1,9 @@
 language: python
 python:
-  - "3.8"  # You can choose the Python version you need
+  - "3.0"  # You can choose the Python version you need
 install:
   - pip install -r requirements.txt
+  - pip install --upgrade urllib3
   - pip install black
   - pip install flake8
   - pip install coverage
