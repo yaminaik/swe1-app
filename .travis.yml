@@ -2,19 +2,17 @@ language: python
 python:
   - "3.8"  # You can choose the Python version you need
 install:
-- pip install -r requirements.txt
-- pip install black
-- pip install flake8
-- pip install coverage
-- pip install coveralls
+  - pip install -r requirements.txt
 before_script:
-- python manage.py migrate
+  - python manage.py migrate
 script:
-- black --check .
-- flake8 .  --max-line-length=100
-- coverage run --source=swe1-app,polls manage.py test
-- coverage report
+  - black --check .
+  - flake8 .  --max-line-length=100
+  - coverage run --source=swe1-app,polls manage.py test
+  - coverage report
 after_success:
+  - export COVERALLS_REPO_TOKEN:
+      secure: "l3CmLadEiZ/vfkUn7GkgkgSpk8UvqMs+faPpQGQWQ0QErGdmXoP4vXO78kua1cy4KeqKR9zdTMPXrdV3BVNsBU/yQ6pKnAKdEi7W75ZKG+I93HySS7kisPyOnQmeI+tdl8cSpiwLdWNqV+m6sY9yhaE3cpMNesOjrpSKDBQkeIdH7EOg0zH8OizDbL6b+SitZaiV03+D9o1piLMpaEPABw1/lQF8Pvihd4jDN5ul+akw70OSDKQ1c7wj+AwZMXt0ElnNfJKNVW7hyWB1T2lKLOssa4LwZMxw1dBdvzJadrTTUvksEIih3HAlykVL5YQw+rUHF9rE9yMMZ4Szrukl9amaA9cTBHfmkW/y+8TMLZZz+AOWYbMi7ls2r3xyvOzJ9tMfaPtrfhJcjY09edD5PXEpMv8C/YCmP7LAhzcus6L29aA2LoKZz2iCuM1zL6R3cOOBqMyGnDjqL7OPL1QDhbWuZSavCS1rDONEgYKfG0bWyqqycHR8AcrG42rcoP91EyfP/9UEPpuX/rp+jeh0uNLi41wEMLCx2smnyCJSm1hmWe7zcVLuRJLqwOmG8RNvBAaO/XVYPcpks+XbQ1canCHNthWwd7zxfKQWVM0m01tR7F9rMRorT2H4axbF/1AbhdPhhRKFTyDQl1sJBsgOe0+QYUmOYLYmB76bItxvQPI=" 
   - coveralls
 deploy:
   provider: elasticbeanstalk
@@ -28,3 +26,4 @@ deploy:
   bucket_name: elasticbeanstalk-us-east-1-663795027423
   on:
     branch: master  # Deploy on the master branch
+#COVERALLS_REPO_TOKEN="" coveralls
